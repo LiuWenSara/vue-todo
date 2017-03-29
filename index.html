@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+   <head>
+       <meta charset="utf-8"/>
+       <meta name="viewport" content="width=device-width,initial-scale=1">
+       <title>VueTodo</title>
+       <link rel="stylesheet" href="css/element.css">
+       <link rel="stylesheet" href="css/index.css">
+   </head>
+    <body>
+        <div id="todo-app">
+            <h1>vue-todolist</h1>
+            <div class="headerInput">
+                <input  placeholder="接下来要做什么？" type="text" @keyup.enter="addTodo" v-model="newTodo"/>
+                <el-button @click="addTodo">添加</el-button>
+            </div>
+            <ul>
+                <li v-for="todo in todos" @mouseenter="toggleDel(todo)" @mouseleave="toggleDel(todo)">
+                    <el-row :gutter="20">
+                        <el-col :span="4"><input class="checkbox" type="checkbox" v-model="todo.done"/></el-col>
+                        <el-col :span="16"><label>{{todo.content}}</label></el-col>
+                        <el-col :span="4"><el-button class="onlydel" @click="delTodo(todo)" type="info" v-show="false">删除</el-button></el-col>
+                    </el-row>
+                </li>
+            </ul>
+            <div class="buttonCenter">
+                <el-button @click="delAll" size="large">删除全部</el-button>
+            </div>
+        </div>
+    <script src="js/vue.js"></script>
+        <script src="js/element.js"></script>
+    <script src="js/index.js"></script>
+    </body>
+</html>
